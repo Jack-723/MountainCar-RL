@@ -25,26 +25,19 @@ class MinFuelWrapper(gym.RewardWrapper):
 
 class MinRealTimeWrapper(gym.RewardWrapper):
     """
-    Scenario 4 — Minimize Real Physical Time.
-
-    Cost is proportional to the number of directional (non-null) actions taken.
-    Equivalent to MinFuelWrapper in discrete action terms — both left and right
-    actions incur cost; idling does not.
-
-    This models the notion that the car's 'clock' only runs when the engine fires.
-
-    reward = -1  if action in {0, 2} (left or right)
-    reward =  0  if action == 1 (idle)
+    Scenario 4 — Continuous, Minimum Steps.
+    Cost is linearly proportional to the number of non-null actions taken.
+    A non-null action is any action where |force| > threshold.
     """
 
-    def __init__(self, env):
+    def __init__(self, env, threshold=0.01):
         super().__init__(env)
+        self.threshold = threshold
 
     def step(self, action):
         obs, reward, terminated, truncated, info = self.env.step(action)
-        reward = -1.0 if action in {0, 2} else 0.0
+        reward = -1.0 if abs(action[0]) > self.threshold else 0.0
         return obs, reward, terminated, truncated, info
-
 
 # Alias used in notebooks
 CustomMountainCarWrapper = MinFuelWrapper

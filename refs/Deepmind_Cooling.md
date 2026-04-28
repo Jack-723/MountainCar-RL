@@ -52,7 +52,48 @@ The authors make a strong case for why RL is a good fit for this problem:
 
 ## 3. State Space
 
+The state is everything the agent can observe about the current situation. In this
+case, the agent reads from the building's sensors every 5 minutes. The raw data
+contains 176 different sensor measurements, including things like water temperatures,
+flow rates, and equipment status (whether certain machines are on or off).
+
+The authors did not use all 176 sensors. Using feature engineering, where 
+they worked closely with HVAC experts to figure out which sensors actually matter,
+they narrowed it down to 50 relevant measurements. This was important because using
+too many irrelevant inputs makes it harder for the model to learn what actually affects
+energy consumption.
+
+Some examples of what the state includes:
+- Water temperatures at different points in the system
+- Flow rates of the pumps
+- Outside weather conditions (temperature, humidity)
+- Current building load (how much cooling is needed)
+- Equipment status (which chillers and pumps are running)
+
+---
+
 ## 4. Action Space
+
+The actions are the controls the agent has available to it at each timestep. The
+agent outputs a 12-dimensional vector, meaning it is adjusting 12 different things
+at once. Some of these are continuous (a specific temperature or flow rate value)
+and some are discrete (turning a piece of equipment on or off).
+
+The full list of what the agent can control includes:
+
+- The temperature setpoint for each chiller (how cold the water should be)
+- How many chillers to run at the same time
+- The cooling tower temperature setpoint
+- The flow rate and number of condenser water pumps
+- The chilled water differential pressure
+- The number of chilled water pumps
+- Whether to use mechanical cooling or free cooling (a more passive mode used
+  when outside temperatures are cold enough)
+
+One important detail is that the agent does not have unlimited freedom here. There
+are 59 constraints on the actions and 24 constraints on what the sensors are allowed
+to read, all defined to protect the equipment and keep people comfortable. The
+agent has to find the best action within all of these boundaries.
 
 ## 5. Reward Function
 

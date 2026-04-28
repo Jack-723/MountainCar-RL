@@ -23,7 +23,7 @@ mountaincar-rl/
 │   ├── scenario_1_discrete_min_steps.ipynb      # MountainCar-v0 — minimize steps
 │   ├── scenario_2_continuous_default.ipynb      # MountainCarContinuous-v0 — default reward
 │   ├── scenario_3_discrete_min_fuel.ipynb       # MountainCar-v0 (adapted) — minimize fuel
-│   └── scenario_4_discrete_min_time.ipynb       # MountainCar-v0 (adapted) — minimize real time
+│   └── scenario_4_continuous_min_steps.ipynb    # MountainCarContinuous-v0 (adapted) — minimize non-null actions
 │
 ├── src/
 │   ├── envs/           # Custom Gym wrappers for adapted reward scenarios
@@ -51,7 +51,7 @@ mountaincar-rl/
 | 1 | `MountainCar-v0` | Default — minimize steps to goal |
 | 2 | `MountainCarContinuous-v0` | Default — penalize large action magnitudes |
 | 3 | `MountainCar-v0` (adapted) | Minimize fuel — cost ∝ number of non-null actions |
-| 4 | `MountainCar-v0` (adapted) | Minimize real time — cost ∝ left+right actions taken |
+| 4 | `MountainCarContinuous-v0` (adapted) | Minimize "real time" — cost ∝ number of non-null force applications (`-1` per step where `|a| > 0.01`, plus `+100` goal bonus) |
 
 ---
 

@@ -1,0 +1,41 @@
+{
+  "scenario": 4,
+  "env_id": "MountainCarContinuous-v0",
+  "wrapper": {
+    "name": "MinRealTimeWrapper",
+    "threshold": 0.01,
+    "goal_bonus": 100.0
+  },
+  "timesteps": {
+    "ppo": 500000,
+    "sac": 100000
+  },
+  "n_eval_episodes": 50,
+  "results": {
+    "ppo": {
+      "mean_reward": -62.0,
+      "std_reward": 20.567459934645925,
+      "mean_fuel": 162.0,
+      "std_fuel": 20.567459934645925,
+      "mean_steps": 162.06,
+      "success_rate": 1.0,
+      "mean_s2_cost": -15.550103100750059,
+      "mean_max_abs_action": 1.0
+    },
+    "sac": {
+      "mean_reward": 30.46,
+      "std_reward": 1.091899673944078,
+      "mean_fuel": 69.54,
+      "std_fuel": 1.091899673944078,
+      "mean_steps": 69.78,
+      "success_rate": 1.0,
+      "mean_s2_cost": -5.002263294568165,
+      "mean_max_abs_action": 0.9640276432037354
+    }
+  },
+  "design_notes": [
+    "MinRealTimeWrapper without goal_bonus has a 'do-nothing' optimal policy (output |a|<=0.01 forever, cumulative reward 0) that beats any goal-reaching policy.",
+    "Patched goal_bonus=+100 restores incentive; both PPO and SAC then converge.",
+    "Resulting policies show bang-then-coast structure with visible idle bands in the heatmap."
+  ]
+}

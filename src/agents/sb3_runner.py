@@ -17,7 +17,7 @@ from typing import Any, Callable, Dict, Optional
 
 import gymnasium as gym
 import numpy as np
-from stable_baselines3 import A2C, DQN, PPO
+from stable_baselines3 import A2C, DQN, PPO, SAC
 from stable_baselines3.common.callbacks import EvalCallback
 from stable_baselines3.common.env_util import make_vec_env
 from stable_baselines3.common.monitor import Monitor
@@ -162,6 +162,82 @@ def make_dqn(env: gym.Env, seed: int = 42, **overrides):
 
 
 FACTORIES = {"ppo": make_ppo, "a2c": make_a2c, "dqn": make_dqn}
+
+
+def make_ppo_continuous(env, seed: int = 42, **overrides):
+    """PPO tuned for ``MountainCarContinuous-v0``.
+
+    Differences from :func:`make_ppo` (the discrete-MountainCar config):
+
+    * ``ent_coef=0.1`` and ``use_sde=True`` — the dense ``-0.1·a²`` cost in
+      the default continuous env (and the per-action cost in Scenario 4)
+      makes "output ~zero force" a strong local optimum; both knobs push
+      the policy to keep exploring forces away from zero.
+    * Larger ``n_steps`` (2048 / 256 / 64) — continuous control benefits
+      from longer rollouts. Defaults here assume a *single* env (as used
+      in Scenario 2 / Scenario 4) but vectorisation works too.
+    """
+    kwargs = dict(
+        policy="MlpPolicy",
+        env=env,
+        learning_rate=3e-4,
+        n_steps=2048,
+        batch_size=64,
+        n_epochs=10,
+        gamma=0.99,
+        gae_lambda=0.95,
+        ent_coef=0.1,
+        vf_coef=0.5,
+        max_grad_norm=0.5,
+        use_sde=True,
+        sde_sample_freq=4,
+        seed=seed,
+        verbose=0,
+    )
+    kwargs.update(overrides)
+    return PPO(**kwargs)
+
+
+def make_sac(env, seed: int = 42, **overrides):
+    """SAC tuned for ``MountainCarContinuous-v0`` (Scenario 2 / 4).
+
+    Hyperparameters are taken from the SB3 RL Zoo entry for
+    ``MountainCarContinuous-v0`` and are critical for the
+    sparse-bonus + per-step-cost reward structure:
+
+    * ``gamma=0.9999`` — the goal bonus only fires at terminal step,
+      so we need a very-long-horizon discount to back-propagate it
+      through the trajectory.
+    * ``log_std_init=-3`` — small initial action stds keep the agent
+      near the cost-free zone early on while SDE provides exploration.
+    * ``net_arch=[400, 300]`` — TD3-style wider critic.
+    * ``use_sde=True`` with ``sde_sample_freq=4`` — gives state-dependent
+      exploration noise that the entropy bonus alone struggles to match
+      on this env.
+    """
+    kwargs = dict(
+        policy="MlpPolicy",
+        env=env,
+        learning_rate=7.3e-4,
+        buffer_size=50_000,
+        batch_size=256,
+        ent_coef="auto",
+        gamma=0.9999,
+        tau=0.02,
+        train_freq=8,
+        gradient_steps=8,
+        learning_starts=10_000,
+        use_sde=True,
+        sde_sample_freq=4,
+        policy_kwargs=dict(log_std_init=-3, net_arch=[400, 300]),
+        seed=seed,
+        verbose=0,
+    )
+    kwargs.update(overrides)
+    return SAC(**kwargs)
+
+
+FACTORIES_CONTINUOUS = {"ppo": make_ppo_continuous, "sac": make_sac}
 
 
 def train(model, total_timesteps: int, eval_env: Optional[gym.Env] = None,

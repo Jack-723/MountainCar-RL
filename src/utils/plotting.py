@@ -15,7 +15,10 @@ def plot_policy_heatmap(model, env, n_bins=50, title="Policy Heatmap", save_path
         for j, vel in enumerate(vel_space):
             obs = np.array([[pos, vel]])
             action, _ = model.predict(obs, deterministic=True)
-            policy_grid[j, i] = action
+            # Flatten to a Python int. SB3's predict returns a (1,)-array
+            # for batched obs; NumPy 2.x rejects assigning a 1-D array to
+            # a scalar slot in policy_grid (older NumPy silently coerced).
+            policy_grid[j, i] = int(np.asarray(action).flatten()[0])
 
     fig, ax = plt.subplots(figsize=(8, 6))
     im = ax.imshow(

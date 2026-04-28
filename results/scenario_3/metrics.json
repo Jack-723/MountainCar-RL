@@ -1,0 +1,70 @@
+{
+  "scenario": 3,
+  "env_id": "MountainCar-v0",
+  "results": {
+    "dqn_raw_obs": {
+      "algo": "DQN (raw obs)",
+      "reward_mode": "min_fuel",
+      "total_timesteps": 200000,
+      "seed": 42,
+      "eval_mean_reward": 762.79814337225,
+      "eval_std_reward": 172.31626574283834,
+      "eval_mean_steps": 184.12,
+      "eval_success_rate": 0.47,
+      "model_path": "C:\\Users\\minec\\Desktop\\RL Group Assignment\\MountainCar-RL\\results\\scenario_3\\models",
+      "monitor_path": "C:\\Users\\minec\\Desktop\\RL Group Assignment\\MountainCar-RL\\results\\scenario_3\\logs",
+      "extras": {
+        "mean_fuel": 155.39,
+        "std_fuel": 39.503137850049335
+      }
+    },
+    "dqn_physics_obs": {
+      "algo": "DQN (physics obs)",
+      "reward_mode": "min_fuel",
+      "total_timesteps": 200000,
+      "seed": 42,
+      "eval_mean_reward": 748.4329741201939,
+      "eval_std_reward": 173.33579658646784,
+      "eval_mean_steps": 126.59,
+      "eval_success_rate": 1.0,
+      "model_path": "C:\\Users\\minec\\Desktop\\RL Group Assignment\\MountainCar-RL\\results\\scenario_3\\models",
+      "monitor_path": "C:\\Users\\minec\\Desktop\\RL Group Assignment\\MountainCar-RL\\results\\scenario_3\\logs",
+      "extras": {
+        "mean_fuel": 119.82,
+        "std_fuel": 25.952795610492522
+      }
+    },
+    "ppo": {
+      "algo": "PPO",
+      "reward_mode": "min_fuel",
+      "total_timesteps": 1000000,
+      "seed": 42,
+      "eval_mean_reward": 1028.4839546333067,
+      "eval_std_reward": 99.73830426748515,
+      "eval_mean_steps": 200.0,
+      "eval_success_rate": 0.0,
+      "model_path": "C:\\Users\\minec\\Desktop\\RL Group Assignment\\MountainCar-RL\\results\\scenario_3\\models",
+      "monitor_path": "C:\\Users\\minec\\Desktop\\RL Group Assignment\\MountainCar-RL\\results\\scenario_3\\logs",
+      "extras": {
+        "mean_fuel": 97.78,
+        "std_fuel": 9.262375505236225
+      }
+    },
+    "a2c": {
+      "algo": "A2C",
+      "reward_mode": "min_fuel",
+      "total_timesteps": 1000000,
+      "seed": 42,
+      "eval_mean_reward": 261.06241537451746,
+      "eval_std_reward": 45.35059840020125,
+      "eval_mean_steps": 200.0,
+      "eval_success_rate": 0.0,
+      "model_path": "C:\\Users\\minec\\Desktop\\RL Group Assignment\\MountainCar-RL\\results\\scenario_3\\models",
+      "monitor_path": "C:\\Users\\minec\\Desktop\\RL Group Assignment\\MountainCar-RL\\results\\scenario_3\\logs",
+      "extras": {
+        "mean_fuel": 0.0,
+        "std_fuel": 0.0
+      }
+    }
+  }
+}

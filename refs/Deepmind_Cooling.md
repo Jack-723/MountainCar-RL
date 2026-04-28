@@ -172,6 +172,99 @@ sees more of the building's behavior.
 
 ## 7. Results
 
+The system was tested on two real commercial buildings over a period of 3 months
+each, using an A/B testing setup where the RL agent and the old rule-based controller
+alternated control day by day. This allowed a fair comparison under similar weather
+and load conditions.
+
+The results were:
+
+- *Building 1 (university campus):* 9% energy savings compared to the baseline
+- *Building 2 (mixed-use commercial building):* 13% energy savings compared to
+  the baseline
+
+Both buildings maintained the same comfort levels for occupants throughout the
+experiment, meaning the agent did not sacrifice comfort to save energy.
+
+A few interesting patterns came out of the results:
+
+- The agent performed better in cooler weather and at lower building loads. When
+  temperatures were high and the building needed maximum cooling, the equipment
+  was running close to its limits and there was less room for the agent to be clever
+  about its decisions.
+
+- Performance improved over time as the agent collected more data and updated its
+  model. This is expected behavior for an agent that retrains daily.
+
+- The agent discovered non-obvious strategies that the rule-based controller never
+  used. For example, it learned to set the condenser water temperature lower than
+  the baseline in certain situations. This made the cooling towers work harder but
+  allowed the chillers to run more efficiently, resulting in lower total energy use.
+
+- The agent also learned to account for sensors that had drifted out of calibration,
+  internally adjusting its behavior to compensate for the measurement errors.
+
+It is worth noting that before the experiment started, the existing rule-based
+controller was tuned and improved as part of making the facility "AI ready". This
+means the baseline the agent was compared against was already better than average,
+so the real improvement over a typical untuned system would likely be even higher
+than 9-13%.
+
+---
+
 ## 8. Challenges
 
+One of the most valuable parts of this paper is how honest the authors are about
+the difficulties they faced. Deploying RL in a real physical system is very
+different from training an agent in a simulator.
+
+The main challenges they encountered were:
+
+- *Limited data.* The agent had no simulator to train in, so it could only learn
+  from real building data collected at 5 minute intervals. Each day only produces
+  around 300 data points, which is very little for training a neural network.
+
+- *Noisy and drifting sensors.* Temperature sensors in real buildings drift over
+  time and sometimes get recalibrated suddenly, causing large jumps in the data.
+  The agent had to be robust to this kind of noise.
+
+- *Complex safety constraints.* The facility managers knew what safe operation
+  looked like in practice but had never had to express it mathematically before.
+  Translating their knowledge into formal constraints that the agent could use
+  took significant back and forth with the HVAC experts at Trane.
+
+- *Real time decisions.* The agent had to make a decision within 1 minute every
+  5 minutes. With 100,000 candidate actions to score through a neural network
+  ensemble, this required careful engineering to make fast enough.
+
+- *Non-stationary environment.* The building behaves differently across seasons,
+  occupancy patterns change, and equipment performance degrades over time. The
+  agent had to continuously adapt rather than relying on a fixed model.
+
+---
+
 ## 9. Our Assessment
+
+This project is a strong example of what it takes to apply RL successfully outside
+of a controlled research environment. The core RL concepts are relatively standard,
+the Q-function, ensemble networks, and exploration-exploitation tradeoff are all
+well established ideas. What makes this work interesting is the engineering effort
+required to make them work reliably on a real physical system with safety constraints,
+noisy data, and no simulator.
+
+The results are meaningful. A 9-13% reduction in energy consumption across two
+different types of commercial buildings, while maintaining occupant comfort, shows
+that the approach generalizes and is not just tuned to one specific building.
+
+From an RL perspective, the most notable design choice is the action search approach.
+Rather than using a policy network that directly outputs an action, the agent generates
+thousands of candidate actions and scores them with the Q-function. This was necessary
+because the complex safety constraints made it very hard to build a policy network
+whose outputs would always be safe. It is a practical and honest tradeoff between
+theoretical elegance and real-world reliability.
+
+The biggest limitation of the paper is that the authors could not run proper ablation
+studies, meaning they could not isolate and measure the contribution of each individual
+design choice. This is a direct consequence of deploying on a live system where you
+cannot run two versions of the agent at the same time. It is an honest admission but
+it does make it harder to know which parts of BCOOLER actually matter most.

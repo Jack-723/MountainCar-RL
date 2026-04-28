@@ -97,7 +97,78 @@ agent has to find the best action within all of these boundaries.
 
 ## 5. Reward Function
 
-## 6. RL Model & Algorithm (BCOOLER)
+The reward function is straightforward. At every 5 minute timestep, the agent
+receives a reward equal to the negative of the total energy consumed by the
+chiller plant during that period. So the more energy used, the more negative
+the reward. The agent's goal is to maximize its total reward over time, which
+means minimizing energy consumption.
+
+This is a clean and honest reward signal because it directly measures what we
+actually care about. There is no need to approximate or engineer a proxy metric,
+the energy meter tells you exactly how well the agent is doing.
+
+The agent also has to satisfy a set of constraints alongside this reward. These
+are not part of the reward itself but act as hard boundaries the agent cannot
+cross, for example keeping the water temperature within a safe range for occupants
+and equipment. This makes the problem a constrained optimization rather than a
+simple reward maximization.
+
+---
+
+## 6. RL Model and Algorithm (BCOOLER)
+
+The algorithm developed for this project is called BCOOLER, which stands for
+BVE-based Constrained Optimization Learner with Ensemble Regularization. It was
+built specifically for this problem because no off-the-shelf RL algorithm was
+able to handle all the real-world constraints and data limitations they faced.
+
+**How it works at a high level:**
+
+At every 5 minute timestep, the agent goes through the following process:
+
+1. It reads the current state from the 50 sensors
+2. It generates around 100,000 possible actions by sampling different combinations
+   of setpoints and equipment settings
+3. It filters out any actions that are predicted to violate the safety constraints
+4. It scores the remaining actions using the Q-function and picks the best one
+
+**The Q-function:**
+
+The Q-function is the core of the agent's decision making. It takes a (state, action)
+pair as input and predicts how much energy will be consumed over the next 15 minutes
+if that action is taken. The agent uses this to compare all the candidate actions and
+pick the one predicted to use the least energy.
+
+The Q-function is represented by a neural network. Specifically, it uses a
+multi-tower multi-headed architecture, where different parts of the network are
+responsible for predicting energy consumption and each of the 24 observation
+constraints separately. This was important because different predictions needed
+different sets of input features to work well.
+
+**The ensemble:**
+
+Instead of training a single neural network, the authors trained an ensemble of
+10 neural networks with the same architecture but different random starting points.
+This gives 10 different predictions for the same input. The key insight is that
+if all 10 networks agree, the agent can be confident. If they disagree a lot, it
+means the agent is in unfamiliar territory.
+
+This disagreement (measured as standard deviation across the 10 predictions) is
+used to control the exploration-exploitation tradeoff:
+
+- During normal operation, the agent picks the action with the best predicted
+  energy saving, but penalizes actions where the ensemble disagrees a lot. This
+  makes the agent cautious in unfamiliar situations.
+- 5% of the time, the agent deliberately explores by picking actions where the
+  ensemble disagrees, in order to gather new data and improve the model.
+
+**Offline training with daily updates:**
+
+The agent is not trained in a simulator. It learns directly from real data collected
+by the building's sensors. It starts by training on historical data from the old
+rule-based controller, then updates its model every day using the new data it
+collected while in control. This means the agent gets better over time as it
+sees more of the building's behavior.
 
 ## 7. Results
 

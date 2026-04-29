@@ -11,10 +11,10 @@
       "eval_std_reward": 23.449614069318923,
       "eval_mean_steps": 120.66,
       "eval_success_rate": 1.0,
-      "model_path": "/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/models/ppo_default.zip",
-      "monitor_path": "/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_default/0.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_default/1.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_default/10.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_default/11.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_default/12.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_default/13.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_default/14.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_default/15.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_default/2.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_default/3.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_default/4.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_default/5.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_default/6.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_default/7.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_default/8.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_default/9.monitor.csv",
+      "model_path": "results/scenario_1/models/ppo_default.zip",
+      "monitor_path": "results/scenario_1/logs/ppo_default/0.monitor.csv;results/scenario_1/logs/ppo_default/1.monitor.csv;results/scenario_1/logs/ppo_default/10.monitor.csv;results/scenario_1/logs/ppo_default/11.monitor.csv;results/scenario_1/logs/ppo_default/12.monitor.csv;results/scenario_1/logs/ppo_default/13.monitor.csv;results/scenario_1/logs/ppo_default/14.monitor.csv;results/scenario_1/logs/ppo_default/15.monitor.csv;results/scenario_1/logs/ppo_default/2.monitor.csv;results/scenario_1/logs/ppo_default/3.monitor.csv;results/scenario_1/logs/ppo_default/4.monitor.csv;results/scenario_1/logs/ppo_default/5.monitor.csv;results/scenario_1/logs/ppo_default/6.monitor.csv;results/scenario_1/logs/ppo_default/7.monitor.csv;results/scenario_1/logs/ppo_default/8.monitor.csv;results/scenario_1/logs/ppo_default/9.monitor.csv",
       "extras": {
-        "vecnormalize_path": "/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/models/ppo_default.vecnormalize.pkl"
+        "vecnormalize_path": "results/scenario_1/models/ppo_default.vecnormalize.pkl"
       }
     },
     "ppo_shaped": {
@@ -26,10 +26,10 @@
       "eval_std_reward": 0.0,
       "eval_mean_steps": 200.0,
       "eval_success_rate": 0.0,
-      "model_path": "/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/models/ppo_shaped.zip",
-      "monitor_path": "/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_shaped/0.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_shaped/1.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_shaped/10.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_shaped/11.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_shaped/12.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_shaped/13.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_shaped/14.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_shaped/15.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_shaped/2.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_shaped/3.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_shaped/4.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_shaped/5.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_shaped/6.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_shaped/7.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_shaped/8.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/ppo_shaped/9.monitor.csv",
+      "model_path": "results/scenario_1/models/ppo_shaped.zip",
+      "monitor_path": "results/scenario_1/logs/ppo_shaped/0.monitor.csv;results/scenario_1/logs/ppo_shaped/1.monitor.csv;results/scenario_1/logs/ppo_shaped/10.monitor.csv;results/scenario_1/logs/ppo_shaped/11.monitor.csv;results/scenario_1/logs/ppo_shaped/12.monitor.csv;results/scenario_1/logs/ppo_shaped/13.monitor.csv;results/scenario_1/logs/ppo_shaped/14.monitor.csv;results/scenario_1/logs/ppo_shaped/15.monitor.csv;results/scenario_1/logs/ppo_shaped/2.monitor.csv;results/scenario_1/logs/ppo_shaped/3.monitor.csv;results/scenario_1/logs/ppo_shaped/4.monitor.csv;results/scenario_1/logs/ppo_shaped/5.monitor.csv;results/scenario_1/logs/ppo_shaped/6.monitor.csv;results/scenario_1/logs/ppo_shaped/7.monitor.csv;results/scenario_1/logs/ppo_shaped/8.monitor.csv;results/scenario_1/logs/ppo_shaped/9.monitor.csv",
       "extras": {
-        "vecnormalize_path": "/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/models/ppo_shaped.vecnormalize.pkl"
+        "vecnormalize_path": "results/scenario_1/models/ppo_shaped.vecnormalize.pkl"
       }
     },
     "a2c_default": {
@@ -41,10 +41,10 @@
       "eval_std_reward": 32.36522053068695,
       "eval_mean_steps": 131.15,
       "eval_success_rate": 1.0,
-      "model_path": "/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/models/a2c_default.zip",
-      "monitor_path": "/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_default/0.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_default/1.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_default/10.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_default/11.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_default/12.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_default/13.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_default/14.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_default/15.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_default/2.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_default/3.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_default/4.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_default/5.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_default/6.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_default/7.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_default/8.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_default/9.monitor.csv",
+      "model_path": "results/scenario_1/models/a2c_default.zip",
+      "monitor_path": "results/scenario_1/logs/a2c_default/0.monitor.csv;results/scenario_1/logs/a2c_default/1.monitor.csv;results/scenario_1/logs/a2c_default/10.monitor.csv;results/scenario_1/logs/a2c_default/11.monitor.csv;results/scenario_1/logs/a2c_default/12.monitor.csv;results/scenario_1/logs/a2c_default/13.monitor.csv;results/scenario_1/logs/a2c_default/14.monitor.csv;results/scenario_1/logs/a2c_default/15.monitor.csv;results/scenario_1/logs/a2c_default/2.monitor.csv;results/scenario_1/logs/a2c_default/3.monitor.csv;results/scenario_1/logs/a2c_default/4.monitor.csv;results/scenario_1/logs/a2c_default/5.monitor.csv;results/scenario_1/logs/a2c_default/6.monitor.csv;results/scenario_1/logs/a2c_default/7.monitor.csv;results/scenario_1/logs/a2c_default/8.monitor.csv;results/scenario_1/logs/a2c_default/9.monitor.csv",
       "extras": {
-        "vecnormalize_path": "/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/models/a2c_default.vecnormalize.pkl"
+        "vecnormalize_path": "results/scenario_1/models/a2c_default.vecnormalize.pkl"
       }
     },
     "a2c_shaped": {
@@ -56,10 +56,10 @@
       "eval_std_reward": 0.0,
       "eval_mean_steps": 200.0,
       "eval_success_rate": 0.0,
-      "model_path": "/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/models/a2c_shaped.zip",
-      "monitor_path": "/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_shaped/0.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_shaped/1.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_shaped/10.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_shaped/11.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_shaped/12.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_shaped/13.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_shaped/14.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_shaped/15.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_shaped/2.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_shaped/3.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_shaped/4.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_shaped/5.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_shaped/6.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_shaped/7.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_shaped/8.monitor.csv;/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/a2c_shaped/9.monitor.csv",
+      "model_path": "results/scenario_1/models/a2c_shaped.zip",
+      "monitor_path": "results/scenario_1/logs/a2c_shaped/0.monitor.csv;results/scenario_1/logs/a2c_shaped/1.monitor.csv;results/scenario_1/logs/a2c_shaped/10.monitor.csv;results/scenario_1/logs/a2c_shaped/11.monitor.csv;results/scenario_1/logs/a2c_shaped/12.monitor.csv;results/scenario_1/logs/a2c_shaped/13.monitor.csv;results/scenario_1/logs/a2c_shaped/14.monitor.csv;results/scenario_1/logs/a2c_shaped/15.monitor.csv;results/scenario_1/logs/a2c_shaped/2.monitor.csv;results/scenario_1/logs/a2c_shaped/3.monitor.csv;results/scenario_1/logs/a2c_shaped/4.monitor.csv;results/scenario_1/logs/a2c_shaped/5.monitor.csv;results/scenario_1/logs/a2c_shaped/6.monitor.csv;results/scenario_1/logs/a2c_shaped/7.monitor.csv;results/scenario_1/logs/a2c_shaped/8.monitor.csv;results/scenario_1/logs/a2c_shaped/9.monitor.csv",
       "extras": {
-        "vecnormalize_path": "/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/models/a2c_shaped.vecnormalize.pkl"
+        "vecnormalize_path": "results/scenario_1/models/a2c_shaped.vecnormalize.pkl"
       }
     },
     "dqn_default": {
@@ -71,8 +71,8 @@
       "eval_std_reward": 9.902378502157955,
       "eval_mean_steps": 99.73,
       "eval_success_rate": 1.0,
-      "model_path": "/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/models/dqn_default.zip",
-      "monitor_path": "/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/dqn_default/single.monitor.csv",
+      "model_path": "results/scenario_1/models/dqn_default.zip",
+      "monitor_path": "results/scenario_1/logs/dqn_default/single.monitor.csv",
       "extras": {
         "vecnormalize_path": ""
       }
@@ -86,8 +86,8 @@
       "eval_std_reward": 27.215517632409643,
       "eval_mean_steps": 177.66,
       "eval_success_rate": 0.57,
-      "model_path": "/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/models/dqn_shaped.zip",
-      "monitor_path": "/Users/matthewmaingot/RL_Group_Project/MountainCar-RL/results/scenario_1/logs/dqn_shaped/single.monitor.csv",
+      "model_path": "results/scenario_1/models/dqn_shaped.zip",
+      "monitor_path": "results/scenario_1/logs/dqn_shaped/single.monitor.csv",
       "extras": {
         "vecnormalize_path": ""
       }

@@ -12,3 +12,7 @@ models/
 RLI_22_A0 - ASSIGNMENT - GROUP ASSIGNMENT -Tinder for RL.pdf
 RLI_BCSAI_C3A_2026 - Final Assignment Groups.xlsx
 RLI_BCSAI_C3B_2026 - Final Assignment Groups.xlsx
+
+# Local-only presentation deck (kept on disk for editing in PowerPoint,
+# not tracked in the repo).
+presentation/

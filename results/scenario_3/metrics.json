@@ -11,8 +11,8 @@
       "eval_std_reward": 172.31626574283834,
       "eval_mean_steps": 184.12,
       "eval_success_rate": 0.47,
-      "model_path": "C:\\Users\\minec\\Desktop\\RL Group Assignment\\MountainCar-RL\\results\\scenario_3\\models",
-      "monitor_path": "C:\\Users\\minec\\Desktop\\RL Group Assignment\\MountainCar-RL\\results\\scenario_3\\logs",
+      "model_path": "results/scenario_3/models",
+      "monitor_path": "results/scenario_3/logs",
       "extras": {
         "mean_fuel": 155.39,
         "std_fuel": 39.503137850049335
@@ -27,8 +27,8 @@
       "eval_std_reward": 173.33579658646784,
       "eval_mean_steps": 126.59,
       "eval_success_rate": 1.0,
-      "model_path": "C:\\Users\\minec\\Desktop\\RL Group Assignment\\MountainCar-RL\\results\\scenario_3\\models",
-      "monitor_path": "C:\\Users\\minec\\Desktop\\RL Group Assignment\\MountainCar-RL\\results\\scenario_3\\logs",
+      "model_path": "results/scenario_3/models",
+      "monitor_path": "results/scenario_3/logs",
       "extras": {
         "mean_fuel": 119.82,
         "std_fuel": 25.952795610492522
@@ -43,8 +43,8 @@
       "eval_std_reward": 99.73830426748515,
       "eval_mean_steps": 200.0,
       "eval_success_rate": 0.0,
-      "model_path": "C:\\Users\\minec\\Desktop\\RL Group Assignment\\MountainCar-RL\\results\\scenario_3\\models",
-      "monitor_path": "C:\\Users\\minec\\Desktop\\RL Group Assignment\\MountainCar-RL\\results\\scenario_3\\logs",
+      "model_path": "results/scenario_3/models",
+      "monitor_path": "results/scenario_3/logs",
       "extras": {
         "mean_fuel": 97.78,
         "std_fuel": 9.262375505236225
@@ -59,8 +59,8 @@
       "eval_std_reward": 45.35059840020125,
       "eval_mean_steps": 200.0,
       "eval_success_rate": 0.0,
-      "model_path": "C:\\Users\\minec\\Desktop\\RL Group Assignment\\MountainCar-RL\\results\\scenario_3\\models",
-      "monitor_path": "C:\\Users\\minec\\Desktop\\RL Group Assignment\\MountainCar-RL\\results\\scenario_3\\logs",
+      "model_path": "results/scenario_3/models",
+      "monitor_path": "results/scenario_3/logs",
       "extras": {
         "mean_fuel": 0.0,
         "std_fuel": 0.0

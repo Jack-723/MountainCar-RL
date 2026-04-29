@@ -1,11 +1,11 @@
-# Part 02 — Real World RL Application Analysis
+# Part 02. Real-World RL Application Analysis
 ## DeepMind: Cooling Commercial Buildings with Reinforcement Learning
 
-**Course:** RLI 22.00 — Reinforcement Learning Introduction  
+**Course:** RLI 22.00, Reinforcement Learning Introduction  
 **Programme:** IE University, BCSAI (Spring 2026)  
-**Group:** C3B Group 5 — Jack Raja Shawki Samawi · Omar El Hajj Chehade · Salmane Mouhib · Matthew Maingot Gerstein · Enrique Rivela Gómez · Leena Yousef Kamel El-Barq · Nathaniel Nader Ayoub
+**Group:** C3B Group 5. Members: Jack Raja Shawki Samawi · Omar El Hajj Chehade · Salmane Mouhib · Matthew Maingot Gerstein · Enrique Rivela Gómez · Leena Yousef Kamel El-Barq · Nathaniel Nader Ayoub
 
-**Paper reviewed:** Luo et al. (DeepMind & Google), 2022 — *Controlling Commercial Cooling Systems Using Reinforcement Learning*  
+**Paper reviewed:** Luo et al. (DeepMind & Google), 2022. *Controlling Commercial Cooling Systems Using Reinforcement Learning*  
 **arXiv:** [2211.07357](https://arxiv.org/abs/2211.07357)
 
 ---
@@ -14,7 +14,7 @@
 
 | § | Section | What it covers |
 |---|---|---|
-| — | Abstract | Executive summary of the paper and our reason for selecting it |
+|   | Abstract | Executive summary of the paper and our reason for selecting it |
 | 1 | Problem Description | Chiller plants, energy footprint, why static rules fall short |
 | 2 | Why Reinforcement Learning? | What makes this problem an RL fit |
 | 3 | State Space | The 50 sensor inputs, feature engineering with HVAC experts |
@@ -26,7 +26,7 @@
 | 9 | Lines of Future Development | Six concrete extensions of BCOOLER |
 | 10 | Connection to Part 01 (MountainCar) | 2×2 matrix mapping + bidirectional lessons |
 | 11 | Conclusions and Assessment | What works, what's limited, "Tinder for RL" framing |
-| — | References | BCOOLER paper + supporting RL literature |
+|   | References | BCOOLER paper + supporting RL literature |
 
 ---
 
@@ -37,8 +37,8 @@ roughly 10% of global electricity, and most chiller plants are still
 controlled by hand-written rules that cannot adapt to weather, occupancy,
 or equipment wear. Luo et al. (DeepMind & Google,
 2022) replace one such rule-based controller with a custom reinforcement
-learning agent — **BCOOLER** (BVE-based Constrained Optimization Learner with
-Ensemble Regularization) — and report **9% and 13% energy savings on two
+learning agent, **BCOOLER** (BVE-based Constrained Optimization Learner with
+Ensemble Regularization), and report **9% and 13% energy savings on two
 real commercial buildings** over three months each, with no degradation in
 occupant comfort. BCOOLER's individual RL components are deliberately
 standard (Q-function, ensemble of 10 networks, exploration via ensemble
@@ -152,8 +152,8 @@ the reward. The agent's goal is to maximize its total reward over time, which
 means minimizing energy consumption.
 
 This is a clean and honest reward signal because it directly measures what we
-actually care about. There is no need to approximate or engineer a proxy metric
-— the energy meter tells you exactly how well the agent is doing.
+actually care about. There is no need to approximate or engineer a proxy metric,
+since the energy meter tells you exactly how well the agent is doing.
 
 The agent also has to satisfy a set of constraints alongside this reward. These
 are not part of the reward itself but act as hard boundaries the agent cannot
@@ -162,7 +162,7 @@ and equipment. This makes the problem a constrained optimization rather than a
 simple reward maximization.
 
 Formally, this places the problem in the **Constrained Markov Decision Process
-(CMDP)** framework rather than a standard MDP — the agent maximises expected
+(CMDP)** framework rather than a standard MDP; the agent maximises expected
 return *subject to* a separate set of hard per-step constraints on auxiliary
 state and action signals. This formal distinction matters: as we discuss in
 Section 6, it directly motivates BCOOLER's per-candidate constraint filter
@@ -186,9 +186,9 @@ The authors note that no standard RL algorithm could satisfy all the
 real-world requirements simultaneously:
 
 - **Policy-gradient methods (PPO, SAC)** output actions directly from a
-  neural network. Hard safety constraints — like "this water temperature
-  must stay in a specific range" or "we cannot turn off both chillers at
-  once" — cannot be expressed as a network-architecture invariant, so
+  neural network. Hard safety constraints (e.g. "this water temperature
+  must stay in a specific range," or "we cannot turn off both chillers at
+  once") cannot be expressed as a network-architecture invariant, so
   PPO/SAC would either violate them or need a heavy reward-penalty regime
   that the authors found hard to tune in their data-limited setting.
 - **Standard DQN** assumes a discrete action space; the chiller plant's
@@ -202,7 +202,7 @@ real-world requirements simultaneously:
 
 BCOOLER's action-search approach is the practical compromise: the
 constraint check is explicit and per-action rather than baked into the
-network, so the agent can never propose an unsafe action — but the
+network, so the agent can never propose an unsafe action, but the
 "policy" emerges from scoring candidates rather than being directly
 output by a network.
 
@@ -231,7 +231,7 @@ At every 5-minute timestep, the agent goes through the following pipeline:
 
 ![BCOOLER decision pipeline (every 5 minutes)](figs/bcooler_pipeline.png)
 
-*Figure 1 — BCOOLER's decision pipeline at every 5-minute control
+*Figure 1. BCOOLER's decision pipeline at every 5-minute control
 step. The orange filter box is what makes BCOOLER different from a
 standard SAC/PPO/DQN: hard safety constraints are enforced
 *per-candidate-action* (not as a soft penalty in the reward), so the
@@ -364,7 +364,7 @@ extensions would test how far this approach generalises:
   of both.
 - **Joint optimisation across multiple plants.** BCOOLER controls one
   chiller plant at a time. A district-cooling network with several plants
-  could be optimised jointly — the action space grows but the system
+  could be optimised jointly; the action space grows, but the system
   redundancy creates more flexibility for the agent to exploit.
 - **Human-in-the-loop constraint refinement.** The paper notes that
   encoding facility-manager intuition into mathematical constraints took
@@ -372,8 +372,8 @@ extensions would test how far this approach generalises:
   proposes actions and the manager flags unsafe ones would scale this
   better.
 - **Richer reward design.** The current reward is purely energy
-  consumption. A more nuanced multi-objective reward — energy + comfort
-  margin + equipment wear — could trade these off explicitly rather
+  consumption. A more nuanced multi-objective reward (energy plus comfort
+  margin plus equipment wear) could trade these off explicitly rather
   than relying on hard constraints to encode them.
 
 ---
@@ -382,12 +382,12 @@ extensions would test how far this approach generalises:
 
 ![2x2 design matrix from Part 01](../results/cross_scenario_matrix.png)
 
-*Figure 2 — The 2×2 design matrix from Part 01. Each cell names the
+*Figure 2. The 2×2 design matrix from Part 01. Each cell names the
 scenario, environment, best algorithm, success rate, and primary
 cost metric. Both **continuous** scenarios (4 and 2) are won by SAC;
 both **discrete** scenarios (1 and 3) are won by DQN-family methods.
 The two **adapted-reward** scenarios (3 and 4) both required wrapper
-patches — a `+100` goal bonus to defeat the do-nothing exploit, plus
+patches, namely a `+100` goal bonus to defeat the do-nothing exploit, plus
 energy-style reward shaping in S3 to break MountainCar's
 sparse-reward exploration trap. This figure is generated by
 `notebooks/cross_scenario_comparison.ipynb`.*
@@ -401,14 +401,14 @@ industrial scale. The mapping is direct:
 | Q-network ensemble + action search | Q-tables and DQN value heads in scenarios 1 and 3; Q-critics in SAC for scenarios 2 and 4 |
 | Reward = negative energy / 5 min (clean, dense) | `-1`/step (S1 dense), `-0.1·a²` (S2 dense), `-1` per non-null action (S3/S4 sparse, plus engineered goal bonus) |
 | Sparse improvement signal early on (small day-to-day differences) | Hit the sparse-reward exploration problem head-on in S3, where vanilla DQN/PPO/A2C never reached the goal during random exploration; required energy-style reward shaping to break the "do nothing" trap |
-| Ensemble disagreement drives exploration | State-Dependent Exploration (SDE) noise in SAC (S2/S4), ε-greedy schedule in DQN (S1/S3) — coarser uncertainty heuristics |
+| Ensemble disagreement drives exploration | State-Dependent Exploration (SDE) noise in SAC (S2/S4), ε-greedy schedule in DQN (S1/S3), coarser uncertainty heuristics |
 | 59 action + 24 observation hard safety constraints | No constraints: action ∈ [-1, 1] continuous or {0, 1, 2} discrete with no notion of "unsafe" |
 | 3 months of A/B testing on a live facility | 100-episode deterministic eval against a fixed Gym env |
 
 The most direct lesson BCOOLER carries for our MountainCar work is the
 **uncertainty-driven exploration-exploitation tradeoff**. We use much
-simpler heuristics — a fixed `exploration_fraction` and `exploration_final_eps`
-schedule for DQN, SDE for SAC — but the underlying question is the same:
+simpler heuristics: a fixed `exploration_fraction` and `exploration_final_eps`
+schedule for DQN, SDE for SAC. But the underlying question is the same:
 *how do you collect enough diverse data to learn the right value function
 without doing damage in the meantime?* On MountainCar "damage" is just
 truncated episodes; on a chiller plant it means uncomfortable occupants
@@ -420,7 +420,7 @@ The reverse direction is also instructive: our scenario 3 + 4 work shows
 that even toy environments can have nasty reward-design pathologies (the
 "do-nothing" exploit, the on-policy oscillation trap) that disappear
 once shaping or a goal bonus is added. Industrial deployments cannot
-afford to discover such pathologies post-hoc — which is precisely why
+afford to discover such pathologies post-hoc, which is precisely why
 BCOOLER's authors invested in the constraint architecture before
 turning the agent on.
 
@@ -429,8 +429,8 @@ turning the agent on.
 ## 11. Conclusions and Assessment
 
 This project is a strong example of what it takes to apply RL successfully outside
-of a controlled research environment. The core RL concepts are relatively standard
-— the Q-function, ensemble networks, and the exploration-exploitation tradeoff
+of a controlled research environment. The core RL concepts are relatively standard:
+the Q-function, ensemble networks, and the exploration-exploitation tradeoff
 are all well-established ideas. What makes this work interesting is the engineering
 effort required to make them work reliably on a real physical system with safety
 constraints, noisy data, and no simulator.
@@ -452,8 +452,8 @@ design choice. This is a direct consequence of deploying on a live system where 
 cannot run two versions of the agent at the same time. It is an honest admission but
 it does make it harder to know which parts of BCOOLER actually matter most.
 
-In the broader context of the "Tinder for RL" framing this assignment uses —
-*find the right RL solution candidate for a given environment* — BCOOLER's
+In the broader context of the "Tinder for RL" framing this assignment uses
+(*find the right RL solution candidate for a given environment*), BCOOLER's
 lesson is that the match-making criteria for industrial RL are very
 different from research benchmarks. The "best" algorithm is the one that
 respects the constraints, learns from limited data, and degrades safely
@@ -470,48 +470,48 @@ unleashed in a Gym version of the same environment.
    Dutta, P., Davis, J. Q., Wu, N., Yang, X., Chang, C.-M., Li, T., Rose, R.,
    Fan, M., Nakhost, H., Liu, T., Kirkman, B., Altamura, F., … Faust, A. (2022).
    *Controlling Commercial Cooling Systems Using Reinforcement Learning.*
-   arXiv:2211.07357. https://arxiv.org/abs/2211.07357 — the paper reviewed in
+   arXiv:2211.07357. https://arxiv.org/abs/2211.07357. This is the paper reviewed in
    this document.
 
 2. Schulman, J., Wolski, F., Dhariwal, P., Radford, A., & Klimov, O. (2017).
-   *Proximal Policy Optimization Algorithms.* arXiv:1707.06347 — PPO baseline
+   *Proximal Policy Optimization Algorithms.* arXiv:1707.06347. PPO baseline
    compared against in Section 6 and used in Part 01 scenarios 2 and 4.
 
 3. Haarnoja, T., Zhou, A., Abbeel, P., & Levine, S. (2018). *Soft Actor-Critic:
    Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic
-   Actor.* ICML 2018. arXiv:1801.01290 — SAC baseline compared against in
+   Actor.* ICML 2018. arXiv:1801.01290. SAC baseline compared against in
    Section 6 and the winning algorithm for Part 01 scenarios 2 and 4.
 
 4. Mnih, V., Kavukcuoglu, K., Silver, D., et al. (2015). *Human-level control
-   through deep reinforcement learning.* *Nature*, 518(7540), 529–533 —
+   through deep reinforcement learning.* *Nature*, 518(7540), 529–533. The
    original DQN paper underlying the Q-learning machinery used in BCOOLER's
    Q-ensemble and in Part 01 scenarios 1 and 3.
 
 5. Camacho, E. F., & Bordons, C. (2007). *Model Predictive Control* (2nd ed.).
-   Springer — standard reference for MPC, the HVAC industry's preferred non-RL
+   Springer. Standard reference for MPC, the HVAC industry's preferred non-RL
    approach that BCOOLER is contrasted against in Section 6.
 
 6. Altman, E. (1999). *Constrained Markov Decision Processes.* Chapman &
-   Hall / CRC — formal reference for the CMDP framework introduced in
+   Hall / CRC. Formal reference for the CMDP framework introduced in
    Section 5.
 
 7. Ng, A. Y., Harada, D., & Russell, S. J. (1999). *Policy Invariance Under
    Reward Transformations: Theory and Application to Reward Shaping.* ICML
-   1999 — theoretical justification for the energy-style reward shaping used
+   1999. Theoretical justification for the energy-style reward shaping used
    in our Part 01 scenarios 1 and 3.
 
 8. Rückstieß, T., Felder, M., & Schmidhuber, J. (2008). *State-Dependent
-   Exploration for Policy Gradient Methods.* ECML PKDD 2008 — the SDE
+   Exploration for Policy Gradient Methods.* ECML PKDD 2008. The SDE
    exploration mechanism used by SAC in Part 01 scenarios 2 and 4 and
    referenced in Section 10.
 
 9. Sutton, R. S., & Barto, A. G. (2018). *Reinforcement Learning: An
-   Introduction* (2nd ed.). MIT Press — standard textbook reference for
+   Introduction* (2nd ed.). MIT Press. Standard textbook reference for
    the Q-function, Bellman equations, and the exploration-exploitation
    tradeoff that underlie BCOOLER's design.
 
 10. Raffin, A., Hill, A., Gleave, A., Kanervisto, A., Ernestus, M., &
     Dormann, N. (2021). *Stable-Baselines3: Reliable Reinforcement Learning
-    Implementations.* JMLR 22(268):1–8. https://github.com/DLR-RM/stable-baselines3
-    — the SB3 library and RL Zoo hyperparameter recipes used to train every
+    Implementations.* JMLR 22(268):1–8. https://github.com/DLR-RM/stable-baselines3.
+    The SB3 library and RL Zoo hyperparameter recipes used to train every
     Part 01 baseline that this paper review is contrasted against.

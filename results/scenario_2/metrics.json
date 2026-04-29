@@ -1,0 +1,77 @@
+{
+  "scenario": 2,
+  "env_id": "MountainCarContinuous-v0",
+  "objective": "minimum_fuel",
+  "reward_formula": "-0.1 * action^2 per step, +100 at goal",
+  "total_timesteps": {
+    "ppo": 300000,
+    "sac": 300000
+  },
+  "seed": 42,
+  "n_eval_episodes": 50,
+  "results": {
+    "ppo": {
+      "algo": "PPO",
+      "hyperparams": {
+        "ent_coef": 0.1,
+        "use_sde": true,
+        "learning_rate": 0.0003,
+        "n_steps": 2048,
+        "batch_size": 64
+      },
+      "mean_reward": 89.88,
+      "std_reward": 0.19,
+      "mean_fuel": 101.1794,
+      "success_rate": 1.0
+    },
+    "sac": {
+      "algo": "SAC",
+      "hyperparams": {
+        "gamma": 0.9999,
+        "use_sde": true,
+        "learning_rate": 0.00073,
+        "buffer_size": 50000,
+        "batch_size": 256,
+        "learning_starts": 10000,
+        "net_arch": [
+          400,
+          300
+        ],
+        "log_std_init": -3
+      },
+      "mean_reward": 96.32,
+      "std_reward": 0.5,
+      "mean_fuel": 36.8467,
+      "success_rate": 1.0,
+      "multi_seed_eval": [
+        {
+          "Seed": 0,
+          "Mean Reward": 96.54,
+          "Std Reward": 0.0,
+          "Success Rate (%)": 100.0
+        },
+        {
+          "Seed": 42,
+          "Mean Reward": 96.78,
+          "Std Reward": 0.0,
+          "Success Rate (%)": 100.0
+        },
+        {
+          "Seed": 123,
+          "Mean Reward": 96.62,
+          "Std Reward": 0.0,
+          "Success Rate (%)": 100.0
+        }
+      ]
+    }
+  },
+  "interpretability": {
+    "model": "DecisionTreeRegressor(max_depth=5)",
+    "fit_on": "SAC policy",
+    "r2_score": 0.9299,
+    "feature_importances": {
+      "position": 0.3006,
+      "velocity": 0.6994
+    }
+  }
+}
